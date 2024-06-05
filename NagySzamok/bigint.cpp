@@ -1,3 +1,10 @@
+/*
+* Egy szám típus, ami képes nagy számokkal való munkára akár egy másodperc alatt.
+* Műveletek: szorzás, osztás, összeadás, kivonás, négyzetre emelés, kiíratás
+* Készítette: Töttös Balázs
+* Elkészült: 2024.05.19
+* Utolsó módosítás: 2024.06.05
+*/
 #include <string>
 #include <iostream>
 #include <sstream>
