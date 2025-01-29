@@ -63,6 +63,7 @@ public:
         }
     }
 
+    //Recursive printing (inorder)
     void printTree(Node* current) {
         if (current == nullptr) return;
         printTree(current->left);
@@ -70,6 +71,7 @@ public:
         printTree(current->right);
     }
 
+    //Deallocating the tree step by step (postorder)
     void deleteTree(Node* current){
         if (current == nullptr) return;
         deleteTree(current->left);
@@ -87,10 +89,12 @@ public:
 int main(){
     Tree tree;
 
+    //Testing append
     tree.append(5);
     tree.append(3);
     tree.append(10);
 
+    //Testing printTree
     tree.printTree(tree.get());
 
     return 0;
