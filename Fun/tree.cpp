@@ -30,17 +30,17 @@ public:
 
         if(head == nullptr){
             head = newItem;
-            return;
+            return;             //return, because it's the first item.
         }
 
         if(value < head->item){
-            //TODO: recursive calls to 
+            //TODO: recursive calls to explore and append to the tree
         }
     }
 
-    ~Tree();
+    ~Tree(); //TODO: delete dynamically allocated memory later
 };
 
 int main(){
-
+    //To be continued...
 }
