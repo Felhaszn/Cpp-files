@@ -25,6 +25,12 @@ public:
         head = nullptr;
     }
 
+    Node* get(){
+        Node* h = head;
+        return h;
+    }
+
+    //appending without recursive calls
     void append(int value){
         Node* newItem = new Node(value);
 
@@ -36,6 +42,7 @@ public:
         Node* current = head;
         Node* last;
         while(true){
+            //if the last item was greater, it appends to the right, otherwise to the left
             if(current == nullptr){
                 if(value > last->item)
                     last->right = newItem;
@@ -50,16 +57,31 @@ public:
             } else if(newItem->item > current->item){
                 current = current->right;
             } else {
+                delete newItem;
                 return;
             }
         }
     }
 
-    void printTree(){
-        //TODO: make this function
+    void printTree(Node* current) {
+        if (current == nullptr) return;
+        printTree(current->left);
+        cout << current->item << " ";
+        printTree(current->right);
     }
 
-    ~Tree(){}; //TODO: delete dynamically allocated memory later
+    void deleteTree(Node* current){
+        if (current == nullptr) return;
+        deleteTree(current->left);
+        deleteTree(current->right);
+
+        cout << "deleting " << current->item << endl;
+        delete current;
+    }
+
+    ~Tree(){
+        deleteTree(head);
+    };
 };
 
 int main(){
@@ -68,6 +90,8 @@ int main(){
     tree.append(5);
     tree.append(3);
     tree.append(10);
+
+    tree.printTree(tree.get());
 
     return 0;
 }
