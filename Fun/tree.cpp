@@ -33,14 +33,41 @@ public:
             return;             //return, because it's the first item.
         }
 
-        if(value < head->item){
-            //TODO: recursive calls to explore and append to the tree
+        Node* current = head;
+        Node* last;
+        while(true){
+            if(current == nullptr){
+                if(value > last->item)
+                    last->right = newItem;
+                else 
+                    last->left = newItem;
+                break;
+            }
+            
+            last = current;
+            if(newItem->item < current->item){
+                current = current->left;
+            } else if(newItem->item > current->item){
+                current = current->right;
+            } else {
+                return;
+            }
         }
     }
 
-    ~Tree(); //TODO: delete dynamically allocated memory later
+    void printTree(){
+        //TODO: make this function
+    }
+
+    ~Tree(){}; //TODO: delete dynamically allocated memory later
 };
 
 int main(){
-    //To be continued...
+    Tree tree;
+
+    tree.append(5);
+    tree.append(3);
+    tree.append(10);
+
+    return 0;
 }
